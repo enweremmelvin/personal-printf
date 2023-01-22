@@ -3,20 +3,20 @@
 #include <string.h>
 
 /**
- * conditional - check for format specifier
+ * gettyp - check for format specifier
  *
- * sign: check for the format modulus (%) character
- * specifier: match specifier
+ * @specifier: match specifier
  *
- * Return: char
+ * Return: function pointer for handling function or null if
+ * there was no match
  */
 
 int (*gettyp(char specifier))(va_list)
 {
 	int i = 0;
 
-	/** declare array of type 'struct formspec' to get format
-	 * and point to function to handle it */
+	/* struct array to match specifier and point to handle function */
+
 	form_spec spec_list[] = {
 		{"c", form_char},
 		{"s", form_string},
