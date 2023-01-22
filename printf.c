@@ -1,7 +1,5 @@
 #include "main.h"
-#include <stdarg.h>
-#include <stddef.h>
-#include <unistd.h>
+#include <stdio.h>
 
 /**
  * _printf - custom built printf funtion
@@ -15,49 +13,41 @@ int _printf(const char *format, ...)
 {
 	int i;
 	va_list strarg;
-	char res __attribute__((unused));
-	int numB __attribute__((unused));
-	char *str __attribute__((unused));
+	int (*form_func_ptr)(va_list);
 
-	str = "";
-	i = numB = 0;
+	char res __attribute__((unused));
+	int char_count __attribute__((unused));
+
+	i = char_count = 0;
 	va_start(strarg, format);
 
 	while (format && format[i])
 	{
 		if (format == NULL)
 			return (-1);
-
 		if (format[i] != '%' && format[i - 1] != '%')
 		{
 			/* get number of bytes printed (string length)*/
-			print(format[i]);
-			numB++;
+			char_count += print(format[i]);
+			i++;
+
+			continue;
 		}
-		else
+		if (format[i] == '%')
 		{
-			res = gettyp(format[i], format[i + 1]);
+			form_func_ptr = gettyp(format[i + 1]);
 
-			switch (res)
-			{
-			case 'c':
-				print(va_arg(strarg, int));
-				break;
-			case 'd':
-				print(va_arg(strarg, int));
-				break;
-			case 'f':
-				print(va_arg(strarg, double));
-				break;
-			case 's':
-				print_full(va_arg(strarg, char *));
-				break;
-			}
+			if (form_func_ptr != NULL)
+				char_count += form_func_ptr(strarg);
+
+			/* print character following (%%) */
+			if (format[i] == '%' &&
+			    format[i + 1] == '%' && format[i + 2] != '%')
+				print(format[i + 2]);
 		}
-
 		i++;
 	}
 
 	va_end(strarg);
-	return (numB);
+	return (char_count);
 }

@@ -1,29 +1,40 @@
-#include <unistd.h>
+#include "main.h"
 
 /**
  * print - print supplied char to standard output
  *
  * @c: char to be printed
+ *
+ * Return: total number of characters printed
  */
 
-void print(char c)
+int print(char c)
 {
-	write(1, &c, 1);
+	int count = 0;
+
+	count = write(1, &c, 1);
+
+	return (count);
 }
 
 /**
  * print_full - loop through and print supplied char pointer
  *
  * @c: char pointer to be printed
+ *
+ * Return: total number of characters printed
  */
 
-void print_full(char *c)
+int print_full(char *c)
 {
+	int count = 0;
 	int i = 0;
 
 	while (c[i])
 	{
-		write(1, &c[i], 1);
+		count += write(1, &c[i], 1);
 		i++;
 	}
+
+	return (count);
 }

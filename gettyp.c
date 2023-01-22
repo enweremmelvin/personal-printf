@@ -1,3 +1,7 @@
+#include "main.h"
+#include <stddef.h>
+#include <string.h>
+
 /**
  * conditional - check for format specifier
  *
@@ -7,22 +11,25 @@
  * Return: char
  */
 
-char gettyp(char sign, char specifier)
+int (*gettyp(char specifier))(va_list)
 {
-	if (
-		(sign == '%' && specifier == 'c') ||
-		(sign == '%' && specifier == '%')
-		)
-		return ('c');
-	else if ((sign == '%' && specifier == 'd') ||
-		 (sign == '%' && specifier == 'i') ||
-		 (sign == '%' && specifier == 'u')
-		)
-		return ('d');
-	else if (sign == '%' && specifier == 'f')
-		return ('f');
-	else if (sign == '%' && specifier == 's')
-		return ('s');
-	else
-		return ('O');
+	int i = 0;
+
+	/** declare array of type 'struct formspec' to get format
+	 * and point to function to handle it */
+	form_spec spec_list[] = {
+		{"c", form_char},
+		{"s", form_string},
+		{"%", form_percent},
+		{NULL, NULL}
+	};
+
+	while (spec_list[i].c)
+	{
+		if (strcmp(spec_list[i].c, &specifier) == 0)
+			return (spec_list[i].handle);
+		i++;
+	}
+
+	return (NULL);
 }
