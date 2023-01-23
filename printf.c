@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 	i = char_count = 0;
 	va_start(strarg, format);
 
-	while (format && format[i])
+	while (format[i])
 	{
 		if (format == NULL)
 			return (-1);
@@ -40,13 +40,12 @@ int _printf(const char *format, ...)
 			if (form_func_ptr != NULL)
 			{
 				char_count += form_func_ptr(strarg);
-				i = i + 2;
+				i += 2;
 				continue;
 			}
+			if (format[i + 1] == '\0')
+				break;
 		}
-		if (format[i] == '\0')
-			break;
-		i++;
 	}
 
 	va_end(strarg);
