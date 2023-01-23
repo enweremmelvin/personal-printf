@@ -1,6 +1,4 @@
 #include "main.h"
-#include <stddef.h>
-#include <string.h>
 
 /**
  * gettyp - check for format specifier
