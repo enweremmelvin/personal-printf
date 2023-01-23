@@ -30,7 +30,6 @@ int _printf(const char *format, ...)
 			/* get number of bytes printed (string length)*/
 			char_count += print(format[i]);
 			i++;
-
 			continue;
 		}
 		if (format[i] == '%')
