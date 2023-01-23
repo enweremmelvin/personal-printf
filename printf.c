@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 	{
 		if (format == NULL)
 			return (-1);
-		if (format[i] != '%' && format[i - 1] != '%')
+		if (format[i] != '%')
 		{
 			/* get number of bytes printed (string length)*/
 			char_count += print(format[i]);
@@ -38,13 +38,13 @@ int _printf(const char *format, ...)
 			form_func_ptr = gettyp(format[i + 1]);
 
 			if (form_func_ptr != NULL)
+			{
 				char_count += form_func_ptr(strarg);
-
-			/* print character following (%%) */
-			if (format[i] == '%' &&
-			    format[i + 1] == '%' && format[i + 2] != '%')
-				print(format[i + 2]);
+				i++;
+			}
 		}
+		if (format[i + 1] == '\0')
+			break;
 		i++;
 	}
 
