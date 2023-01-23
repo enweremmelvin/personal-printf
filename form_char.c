@@ -5,7 +5,7 @@
  *
  * @strarg: variadic list of parameters
  *
- * Return: return number of characters printer
+ * Return: return number of characters printed
  */
 
 int form_char(va_list strarg)
@@ -13,8 +13,11 @@ int form_char(va_list strarg)
 	char print_char;
 	int char_count = 0;
 
-	print_char = (char)va_arg(strarg, int);
-	char_count = print(print_char);
+	if (va_arg(strarg, int))
+	{
+		print_char = (char)va_arg(strarg, int);
+		char_count = print(print_char);
+	}
 
 	return (char_count);
 }
