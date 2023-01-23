@@ -10,13 +10,13 @@
 
 int form_char(va_list strarg)
 {
-	char print_char;
+	int print_char;
 	int char_count = 0;
 
 	if (strarg == NULL)
 		return (char_count);
 
-	print_char = (char)va_arg(strarg, int);
+	print_char = va_arg(strarg, int);
 	char_count = print(print_char);
 
 	return (char_count);
