@@ -14,7 +14,6 @@ int _printf(const char *format, ...)
 	va_list strarg;
 	int (*form_func_ptr)(va_list);
 
-	char res __attribute__((unused));
 	int char_count __attribute__((unused));
 
 	i = char_count = 0;
