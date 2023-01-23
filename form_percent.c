@@ -15,10 +15,5 @@ int form_percent(va_list strarg)
 
 	(void) strarg;
 
-	if (char_count == 1)
-		char_count += 1;
-	else
-		char_count = 0;
-
 	return (char_count);
 }
