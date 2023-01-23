@@ -13,5 +13,7 @@ int form_percent(va_list strarg)
 	char percent = '%';
 	int char_count = print(percent);
 
+	(void) strarg;
+
 	return (char_count);
 }
