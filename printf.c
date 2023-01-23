@@ -45,9 +45,6 @@ int _printf(const char *format, ...)
 			}
 			i += 2;
 		}
-
-		if (format[i] == '\0')
-			break;
 	}
 
 	va_end(strarg);
