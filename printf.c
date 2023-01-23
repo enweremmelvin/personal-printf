@@ -44,7 +44,9 @@ int _printf(const char *format, ...)
 				continue;
 			}
 			i += 2;
+			continue;
 		}
+		i++;
 	}
 
 	va_end(strarg);
