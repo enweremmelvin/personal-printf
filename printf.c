@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 	{
 		if (format == NULL)
 			return (-1);
-		if (format[i] != '%')
+		if (format[i] != '%' && format[i] != '\0')
 		{
 			/* get number of bytes printed (string length)*/
 			char_count += print(format[i]);
@@ -40,12 +40,13 @@ int _printf(const char *format, ...)
 			if (form_func_ptr != NULL)
 			{
 				char_count += form_func_ptr(strarg);
-				i += 2;
-				continue;
+				i++;
 			}
-			if (format[i + 1] == '\0')
-				break;
 		}
+		i++;
+
+		if (format[i] == '\0')
+			break;
 	}
 
 	va_end(strarg);
