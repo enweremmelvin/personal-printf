@@ -40,10 +40,11 @@ int _printf(const char *format, ...)
 			if (form_func_ptr != NULL)
 			{
 				char_count += form_func_ptr(strarg);
-				i++;
+				i += 2;
+				continue;
 			}
+			i += 2;
 		}
-		i++;
 
 		if (format[i] == '\0')
 			break;
