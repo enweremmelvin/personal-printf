@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * _printf - custom built printf funtion
@@ -25,6 +24,11 @@ int _printf(const char *format, ...)
 	{
 		if (format == NULL)
 			return (-1);
+		if ((strlen(format) == 2) && (format[0] == '%'))
+		{
+			print('%');
+			break;
+		}
 		if (format[i] != '%' && format[i] != '\0')
 		{
 			/* get number of bytes printed (string length)*/

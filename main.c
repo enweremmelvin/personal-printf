@@ -17,8 +17,9 @@ int main(void)
 	count = printf("This is a text case - %c { %s { %%\n", 'A', "some");
 	printf("%d\n\n", count);
 
-	_printf("% - 1\n");
-	printf("% - 2\n");
+	_printf("%\n");
+	_printf("--------");
+	printf("%\n");
 
 	return (0);
 }
