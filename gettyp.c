@@ -24,7 +24,7 @@ int (*gettyp(char specifier))(va_list)
 		{NULL, NULL}
 	};
 
-	while (spec_list[i].c != NULL)
+	while (spec_list[i].c)
 	{
 		if (strcmp(spec_list[i].c, &specifier) == 0)
 			return (spec_list[i].handle);
