@@ -22,8 +22,6 @@ int _printf(const char *format, ...)
 
 	while (format[i])
 	{
-		if (format == NULL)
-			return (-1);
 		if (format[i] != '%' && format[i] != '\0')
 		{
 			/* get number of bytes printed (string length)*/
