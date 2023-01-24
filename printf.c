@@ -38,6 +38,12 @@ int _printf(const char *format, ...)
 				i += 2;
 				continue;
 			}
+			else
+			{
+				char_count += print('%');
+				i++;
+				continue;
+			}
 			i += 2;
 			continue;
 		}

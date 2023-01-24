@@ -29,11 +29,5 @@ int (*gettyp(char specifier))(va_list)
 		i++;
 	}
 
-	if (spec_list[i].c == NULL)
-	{
-		print('%');
-		print(specifier);
-	}
-
 	return (NULL);
 }
