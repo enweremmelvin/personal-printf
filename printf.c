@@ -31,7 +31,6 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			form_func_ptr = gettyp(format[i + 1]);
-
 			if (form_func_ptr != NULL)
 			{
 				char_count += form_func_ptr(strarg);
@@ -46,8 +45,7 @@ int _printf(const char *format, ...)
 			}
 			i += 2;
 			continue;
-		}
-		i++;
+		} i++;
 	}
 
 	va_end(strarg);
