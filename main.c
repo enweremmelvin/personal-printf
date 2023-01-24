@@ -11,10 +11,10 @@ int main(void)
 {
 	int len;
 
-	len = _printf("%");
+	len = _printf("%.");
 	printf("%d\n", len);
 
-	len = printf("%");
+	len = printf("%.");
 	printf("%d\n", len);
 
 
