@@ -38,5 +38,4 @@ int form_char(va_list);
 int form_string(va_list);
 int form_percent(va_list);
 
-
 #endif
