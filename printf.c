@@ -18,17 +18,15 @@ int _printf(const char *format, ...)
 
 	i = char_count = 0;
 	va_start(strarg, format);
-
 	while (format != NULL && format[i])
 	{
 		if (format[i] != '%' && format[i] != '\0')
 		{
-			/* get number of bytes printed (string length)*/
 			char_count += print(format[i]);
 			i++;
 			continue;
 		}
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i + 1] != '\0')
 		{
 			form_func_ptr = gettyp(format[i + 1]);
 			if (form_func_ptr != NULL)
@@ -37,14 +35,16 @@ int _printf(const char *format, ...)
 				i += 2;
 				continue;
 			}
-			else
+			if (form_func_ptr == NULL)
 			{
 				char_count += print('%');
 				i++;
 				continue;
-			}
-			i += 2;
+			} i += 2;
 			continue;
+		} else
+		{
+			return (-1);
 		} i++;
 	}
 
